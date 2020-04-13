@@ -14,7 +14,72 @@ class App extends Component {
     console.log("constructor");
     this.state = {
       caseTimeSeries: [],
+      statewise: [],
     };
+    this.columns = [
+      {
+        name: "Date",
+        sortable: true,
+        selector: "date",
+      },
+      {
+        name: "Daily Confirmed Cases",
+        sortable: true,
+        selector: "dailyconfirmed",
+      },
+      {
+        name: "Daily Deceased.",
+        sortable: true,
+        selector: "dailydeceased",
+      },
+      {
+        name: "daily Recovered",
+        sortable: true,
+        selector: "dailyrecovered",
+      },
+      {
+        name: "Total Deceased",
+        sortable: true,
+        selector: "totaldeceased",
+      },
+      {
+        name: "Total Recovered",
+        sortable: true,
+        selector: "totalrecovered",
+      },
+      {
+        name: "Total Confirmed",
+        sortable: true,
+        selector: "totalconfirmed",
+      },
+    ];
+    this.stateColumns = [
+      {
+        name: "State",
+        sortable: true,
+        selector: "state",
+      },
+      {
+        name: "Active",
+        sortable: true,
+        selector: "active",
+      },
+      {
+        name: "Deaths",
+        sortable: true,
+        selector: "deaths",
+      },
+      {
+        name: "Recovered",
+        sortable: true,
+        selector: "recovered",
+      },
+      {
+        name: "Confirmed",
+        sortable: true,
+        selector: "confirmed",
+      },
+    ];
   }
 
   async componentDidMount() {
@@ -28,7 +93,20 @@ class App extends Component {
       console.log("error", error);
     }
 
-    this.setState({ caseTimeSeries: caseTimeArr.reverse() });
+    try {
+      const { data } = await axios.get(
+        "https://api.covid19india.org/data.json"
+      );
+      var stateViseArr = data ? data.statewise : [];
+      console.log("data", data);
+    } catch (error) {
+      console.log("error", error);
+    }
+
+    this.setState({
+      caseTimeSeries: caseTimeArr.reverse(),
+      statewise: stateViseArr,
+    });
   }
 
   render() {
@@ -36,7 +114,11 @@ class App extends Component {
       <>
         <Header />
         {/* <Body caseData={this.state.caseTimeSeries} /> */}
-        <CommonDataTable commonData={this.state.caseTimeSeries} />
+        <CommonDataTable
+          commonData={this.state.statewise}
+          columns={this.stateColumns}
+        />
+
         <Footer />
       </>
     );

@@ -58,8 +58,8 @@ class CommonDataTable extends Component {
   };
 
   render() {
-    const { columns, filterText } = this.state;
-    const { commonData } = this.props;
+    const { filterText } = this.state;
+    const { commonData, columns } = this.props;
     // const filteredItems = commonData.filter((item) =>
     //   item.title.toLowerCase().includes(filterText.toLowerCase())
     // );
