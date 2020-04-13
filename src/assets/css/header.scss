@@ -1,0 +1,13 @@
+@import "./colors.scss";
+
+.header-box{
+    background-color: $color-header;
+    .navbar-brand{
+        color: #ffffff !important;
+    }
+    .navbar-nav{
+        a{
+            color: #ffffff !important;
+        }
+    } 
+}
