@@ -1,0 +1,40 @@
+@import "./colors.scss";
+
+.banner-box{
+    background-color: $color-bg;
+    // height:100vh;
+    width: 100%;
+    margin: 0px !important;
+    display: flex;
+    padding: 100px 0px 50px 0px;
+    .left-box{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 60%;
+        .cardBanner{
+            flex-direction: row;
+            background-color: $color-header;
+            // height: 150px;
+            box-shadow: 9px 8px 7px 2px #464444;
+            width: 40%;
+            padding: 20px;
+            margin-bottom: 50px;
+            .headingBox{
+                color: #ffffff;
+                font-size: 30px;
+                text-align: center;
+                
+            }
+            .text{
+                color: #ffffff;
+                font-size: 22px;
+                text-align: center;
+            }
+        }
+    }
+    .right-box{
+        width: 40%;
+
+    }
+}
