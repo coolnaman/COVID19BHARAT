@@ -6,6 +6,7 @@ import Body from "./Components/Body";
 import axios from "axios";
 import CommonDataTable from "./Components/CommonDataTable";
 import Banner from "./Components/Banner";
+import "./assets/css/stateTable.scss";
 
 class App extends Component {
   constructor(props) {
@@ -141,10 +142,14 @@ class App extends Component {
           totalCases={totalCases}
         />
         {/* <Body caseData={this.state.caseTimeSeries} /> */}
-        <CommonDataTable
-          commonData={this.state.statewise}
-          columns={this.stateColumns}
-        />
+        <div>
+          <div className="col-md-6 stateTable">
+            <CommonDataTable
+              commonData={this.state.statewise}
+              columns={this.stateColumns}
+            />
+          </div>
+        </div>
 
         <Footer />
       </>
